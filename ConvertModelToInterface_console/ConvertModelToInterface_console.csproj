@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Folder Include="DataAccessLayer\" />
-    <Folder Include="ApplicationServiceLayer\" />
     <Folder Include="Data\" />
     <Folder Include="Model\" />
     <Folder Include="Builders\" />
