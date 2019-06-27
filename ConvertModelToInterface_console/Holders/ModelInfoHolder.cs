@@ -8,9 +8,9 @@ namespace ConvertModelToInterface_console.Holders
     {
         private IModel FromModel;
         private IModel ToModel;
-        private IEnumerable<Object> ModelMetaData;
+        private IEnumerable<MetaDataModel> ModelMetaData;
 
-        public ModelInfoHolder(IModel fromModel, IEnumerable<Object> modelMetaData)
+        public ModelInfoHolder(IModel fromModel, IEnumerable<MetaDataModel> modelMetaData)
         {
             this.FromModel = fromModel;
             this.ModelMetaData = modelMetaData;

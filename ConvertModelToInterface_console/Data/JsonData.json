@@ -1,0 +1,6 @@
+﻿{
+  "IntField": 11111,
+  "StringField": "aaaaa",
+  "BooleanField": true,
+  "StringListField": [ "あああああ", "かかかかか" ]
+}

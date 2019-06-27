@@ -7,13 +7,12 @@ namespace ConvertModelToInterface_console.Directors
     public class Director
     {
         private readonly IBuilder Builder;
-        private ModelInfoHolder ModelInfoHolder;
 
         public Director(IBuilder builder, ModelInfoHolder modelInfoHolder)
         {
             builder.SetHolder(modelInfoHolder);
             this.Builder = builder;
-            this.ModelInfoHolder = modelInfoHolder;
+            this.Builder.SetHolder(modelInfoHolder);
         }
 
         public void ConvertModel()

@@ -6,12 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DataAccessLayer\" />
     <Folder Include="Data\" />
     <Folder Include="Model\" />
     <Folder Include="Builders\" />
     <Folder Include="Directors\" />
     <Folder Include="Holders\" />
+    <Folder Include="Context\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />

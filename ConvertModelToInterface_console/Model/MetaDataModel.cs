@@ -1,10 +1,9 @@
 ﻿using System;
 namespace ConvertModelToInterface_console.Model
 {
-    public class KVInterface
+    public class MetaDataModel
     {
-        public KVInterface()
-        {
-        }
+            private int id;
     }
+
 }

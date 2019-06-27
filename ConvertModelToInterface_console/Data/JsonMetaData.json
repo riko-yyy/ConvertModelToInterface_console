@@ -1,0 +1,23 @@
+﻿[
+  {
+    "ID": 1,
+    "FromModelName": "TestModel",
+    "FromModelField": "IntField",
+    "ToModelName": "TestIF",
+    "ToModelField": "TestIF_IntField"
+  },
+  {
+    "ID": 2,
+    "FromModelName": "TestModel",
+    "FromModelField": "StringField",
+    "ToModelName": "TestIF",
+    "ToModelField": "TestIF_StringField"
+  },
+  {
+    "ID": 3,
+    "FromModelName": "TestModel",
+    "FromModelField": "BooleanField",
+    "ToModelName": "TestIF",
+    "ToModelField": "TestIF_BooleanField"
+  }
+]
