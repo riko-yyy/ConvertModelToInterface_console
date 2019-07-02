@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using ConvertModelToInterface_console.Builders;
+using ConvertModelToInterface_console.Context;
 using ConvertModelToInterface_console.Directors;
 using ConvertModelToInterface_console.Holders;
 using ConvertModelToInterface_console.Model;
@@ -17,6 +18,9 @@ namespace ConvertModelToInterface_console
             //データ取得
             TestModel testModel = new TestModel();
             //メタデータ取得
+            JsonContext context = new JsonContext();
+            context.Select<MetaDataModel>("JsonMetaData.json");
+
             IEnumerable<MetaDataModel> metaData = null;
 
             //変換用ホルダー作成

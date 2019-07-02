@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 
 namespace ConvertModelToInterface_console.Context
 {
-    public class JsonContext:IContext
+    public class JsonContext : IContext
     {
-        private string dataPath = @"..\..\Data\jsonData.json";
+        private readonly string dataPath = "../../../Data";
 
         public T SelectOne<T>() where T : new()
         {
@@ -24,19 +24,15 @@ namespace ConvertModelToInterface_console.Context
 
             return result;
         }
+
         public IEnumerable<T> Select<T>() where T : new()
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// jsonModelマッピング
-        /// </summary>
-        /// <param name="jsonDictionary"></param>
-        /// <param name="type"></param>
-        /// <returns></returns>
         private IDictionary<string, PropertyInfo> MappingJsonModel(IDictionary<string, string> jsonDictionary, Type type)
         {
+
             IDictionary<string, PropertyInfo> resultData = new Dictionary<string, PropertyInfo>();
             foreach (var jsonKVPair in jsonDictionary)
             {
@@ -53,21 +49,21 @@ namespace ConvertModelToInterface_console.Context
             return resultData;
         }
 
-        //private IEnumerable<T> AsEnumerableEntity<T>(SqlDataReader reader) where T : new()
-        //{
-        //    // DBカラムとEntityプロパティをマッピング
-        //    IDictionary<string, PropertyInfo> mapping = MappingJsonModel(reader, typeof(T));
+        private IEnumerable<T> AsEnumerableModel<T>(IDictionary<string,string> readJsonData) where T : new()
+        {
+            // JsonのKeyとModelプロパティをマッピング
+            IDictionary<string, PropertyInfo> mapping = MappingJsonModel(readJsonData, typeof(T));
 
-        //    // SqlDataReaderのデータを取得
-        //    IList<T> list = new List<T>();
-        //    while (reader.Read())
-        //    {
-        //        T r = ToEntity<T>(reader, mapping);
-        //        list.Add(r);
-        //    }
+            // SqlDataReaderのデータを取得
+            IList<T> list = new List<T>();
+            //while (readJsonData.Read())
+            //{
+            //    T r = ToEntity<T>(reader, mapping);
+            //    list.Add(r);
+            //}
 
-        //    return list;
-        //}
+            return list;
+        }
 
         //private T ToEntity<T>(SqlDataReader row, IDictionary<string, PropertyInfo> mapping) where T : new()
         //{
@@ -91,23 +87,29 @@ namespace ConvertModelToInterface_console.Context
         //    return resultData;
         //}
 
-        //public IEnumerable<T> Select<T>(string commandText, params SqlParameter[] parameters) where T : new()
-        //{
-        //    // SQLコマンド作成
-        //    using (var command = CreateSelectCommand(commandText, parameters))
-        //    {
-        //        // SQLの実行
-        //        using (SqlDataReader reader = command.ExecuteReader())
-        //        {
-        //            IEnumerable<T> items = AsEnumerableEntity<T>(reader);
-        //            // デバッグ用出力
-        //            if (logger.IsDebugEnabled)
-        //            {
-        //                logger.Debug($"取得データ ==> {items.EnumerableToString()}");
-        //            }
-        //            return items;
-        //        }
-        //    }
-        //}
+        public IEnumerable<T> Select<T>(string jsonFileName) where T : new()
+        {
+            string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), dataPath));
+            //string path = dataPath;//+jsonFileName;
+            //path = Path.GetFullPath(path);
+            // JSON読み込みの実行
+            using (StreamReader r = new StreamReader(Path.Combine(path, jsonFileName)))
+            {
+                string json = r.ReadToEnd();
+                //DBテーブル形式を想定
+                //IDictionary<string, string> readJsonData = (IDictionary<string, string>)JsonConvert.DeserializeObject(json);
+
+                var readJsonData = JsonConvert.DeserializeObject(json);
+
+                //ModelのIEnumableへ変換
+                IEnumerable<T> items = null;//= AsEnumerableModel<T>(readJsonData);
+                return items;
+            }
+           
+
+                
+
+
+        }
     }
 }
