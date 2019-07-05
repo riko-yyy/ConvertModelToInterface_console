@@ -19,9 +19,9 @@ namespace ConvertModelToInterface_console
             TestModel testModel = new TestModel();
             //メタデータ取得
             JsonContext context = new JsonContext();
-            context.Select<MetaDataModel>("JsonMetaData.json");
 
-            IEnumerable<MetaDataModel> metaData = null;
+
+            IEnumerable<MetaDataModel> metaData = context.Select<MetaDataModel>("JsonMetaData.json");
 
             //変換用ホルダー作成
             ModelInfoHolder holder = new ModelInfoHolder(testModel, metaData);
