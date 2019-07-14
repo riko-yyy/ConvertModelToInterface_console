@@ -22,12 +22,16 @@ namespace ConvertModelToInterface_console.Builders
 
         public T ConvertFromModel<T>(IEnumerable<T> fromObj) where T : IModel
         {
-            return (T)(object)JsonParse(JsonConvert.SerializeObject(fromObj));
+            FromModelToDictionaryBuilder builder = new FromModelToDictionaryBuilder();
+            IEnumerable<Dictionary> dictionary = (IEnumerable<Dictionary>)builder.ConvertFromModel(fromObj);
+            return (T)(object)JsonParse(JsonConvert.SerializeObject(dictionary));
         }
 
         public T ConvertFromModel<T>(T fromObj) where T : IModel
         {
-            return (T)(object)JsonParse(JsonConvert.SerializeObject(fromObj));
+            FromModelToDictionaryBuilder builder = new FromModelToDictionaryBuilder();
+            Dictionary dic = builder.ConvertFromModel(fromObj)as Dictionary;
+            return (T)(object)JsonParse(JsonConvert.SerializeObject(dic));
         }
 
         public IModel JsonParse(string jsonString)
@@ -37,7 +41,7 @@ namespace ConvertModelToInterface_console.Builders
             //var fromJsonData = JsonConvert.DeserializeObject<IEnumerable<IDictionary<string, string>>>(jsonString);
             //foreach (MetaDataModel metaData in ModelInfoHolder.GetModelMetaData())
             //{
-                
+
             //}
 
 

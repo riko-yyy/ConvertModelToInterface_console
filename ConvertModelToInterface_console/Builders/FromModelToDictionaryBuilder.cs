@@ -47,5 +47,6 @@ namespace ConvertModelToInterface_console.Builders
 
             return (T)(object)dictionary;
         }
+
     }
 }
