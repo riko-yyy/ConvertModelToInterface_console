@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertModelToInterface_console", "ConvertModelToInterface_console\ConvertModelToInterface_console.csproj", "{25AF81FE-E24C-47CE-9A56-F1E6238E9FD0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED715D8A-31C7-47F9-8B8C-DDA15C26FB77}"
+	ProjectSection(SolutionItems) = preProject
+		ConvertModelToInterface_console.sln = ConvertModelToInterface_console.sln
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

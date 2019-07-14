@@ -6,7 +6,7 @@ using ConvertModelToInterface_console.Model;
 
 namespace ConvertModelToInterface_console.Builders
 {
-    public class FromModelToDuplicateKeyDictionaryBuilder:IBuilder
+    public class FromModelToDuplicateKeyDictionaryBuilder : IBuilder
     {
         private ModelInfoHolder ModelInfoHolder;
 

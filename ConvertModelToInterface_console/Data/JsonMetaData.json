@@ -19,5 +19,12 @@
     "FromModelField": "BooleanField",
     "ToModelName": "TestIF",
     "ToModelField": "TestIF_BooleanField"
+  },
+  {
+    "ID": 4,
+    "FromModelName": "TestModel",
+    "FromModelField": "DateTimeField",
+    "ToModelName": "TestIF",
+    "ToModelField": "TestIF_DateTimeField"
   }
 ]

@@ -24,16 +24,20 @@ namespace ConvertModelToInterface_console
             IEnumerable<TestModel> testModel = context.Select<TestModel>("JsonData.json");
 
             //変換用ホルダー作成
-            ModelInfoHolder holder = new ModelInfoHolder(testModel.First(), metaData);
+            //TODO 複数の場合は？ => modelが必ずしもcollectionではないことを考えると外から繰り返し処理
+            //collectionはどこにもつ？ => holderもしくはもたずにシナリオで外から順に与える
+            ModelInfoHolder holder = new ModelInfoHolder(testModel, metaData);
 
             //変換処理の実行
+            FromModelToDictionaryBuilder builder = new FromModelToDictionaryBuilder();
             //FromModelToJsonBuilder builder = new FromModelToJsonBuilder();
             //FromModelToDuplicateKeyDictionaryBuilder builder = new FromModelToDuplicateKeyDictionaryBuilder();
-            FromModelToDuplicateKVBuilder builder = new FromModelToDuplicateKVBuilder();
+            //FromModelToDuplicateKVBuilder builder = new FromModelToDuplicateKVBuilder();
             Director director = new Director(builder,holder);
             director.ConvertModel();
 
             IModel toModel = holder.GetToModel();
+            IEnumerable<IModel> toModelCollection = holder.GetToModelCollection();
 
             Console.WriteLine(toModel);
         }
