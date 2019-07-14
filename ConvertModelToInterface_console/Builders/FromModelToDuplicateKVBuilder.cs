@@ -5,7 +5,7 @@ using ConvertModelToInterface_console.Model;
 
 namespace ConvertModelToInterface_console.Builders
 {
-    public class FromModelToDuplicateKVBuilder:IBuilder
+    public class FromModelToDuplicateKVBuilder : IBuilder
     {
         private ModelInfoHolder ModelInfoHolder;
 

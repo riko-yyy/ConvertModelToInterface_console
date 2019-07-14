@@ -1,6 +1,14 @@
-﻿{
-  "IntField": 11111,
-  "StringField": "aaaaa",
-  "BooleanField": true,
-  "StringListField": [ "あああああ", "かかかかか" ]
-}
+﻿[
+  {
+    "IntField": 11111,
+    "StringField": "aaaaa",
+    "BooleanField": true,
+    "DateTimeField": "2019/05/01 12:34:56"
+  },
+  {
+    "IntField": 22222,
+    "StringField": "bbbbb",
+    "BooleanField": false,
+    "DateTimeField": "2019/05/01 12:34:56"
+  }
+]

@@ -3,11 +3,11 @@ namespace ConvertModelToInterface_console.Model
 {
     public class JsonInterface:IModel
     {
-        public string JsonField { get; }
+        public string Result { get; }
 
         public JsonInterface(string jsonString)
         {
-            this.JsonField = jsonString;
+            this.Result = jsonString;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ConvertModelToInterface_console.Holders;
 using ConvertModelToInterface_console.Model;
 using Newtonsoft.Json;
@@ -25,7 +26,11 @@ namespace ConvertModelToInterface_console.Builders
 
             //jsonへparse
             //Tへキャストするには1度objectへキャスト
-            T jsonInterface = (T)(object)new JsonInterface(JsonConvert.SerializeObject(fromObj));
+            var sss = JsonConvert.SerializeObject(fromObj);
+            JsonInterface aaa = new JsonInterface(sss);
+
+            T jsonInterface = (T)(object)aaa;
+            //T jsonInterface = (T)(object)new JsonInterface(JsonConvert.SerializeObject(fromObj));
 
             return jsonInterface;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using ConvertModelToInterface_console.Builders;
 using ConvertModelToInterface_console.Context;
 using ConvertModelToInterface_console.Directors;
@@ -15,21 +16,20 @@ namespace ConvertModelToInterface_console
         {
             Console.WriteLine("Hello World!");
 
-            //データ取得
-            TestModel testModel = new TestModel();
             //メタデータ取得
             JsonContext context = new JsonContext();
-
-
             IEnumerable<MetaDataModel> metaData = context.Select<MetaDataModel>("JsonMetaData.json");
 
+            //データ取得
+            IEnumerable<TestModel> testModel = context.Select<TestModel>("JsonData.json");
+
             //変換用ホルダー作成
-            ModelInfoHolder holder = new ModelInfoHolder(testModel, metaData);
+            ModelInfoHolder holder = new ModelInfoHolder(testModel.First(), metaData);
 
             //変換処理の実行
-            //FromModelToJsonBuilder builder = new FromModelToJsonBuilder();
+            FromModelToJsonBuilder builder = new FromModelToJsonBuilder();
             //FromModelToDuplicateKeyDictionaryBuilder builder = new FromModelToDuplicateKeyDictionaryBuilder();
-            FromModelToDuplicateKVBuilder builder = new FromModelToDuplicateKVBuilder();
+            //FromModelToDuplicateKVBuilder builder = new FromModelToDuplicateKVBuilder();
             Director director = new Director(builder,holder);
             director.ConvertModel();
 

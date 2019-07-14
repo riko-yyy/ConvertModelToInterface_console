@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ConvertModelToInterface_console.Model
 {
-    public class DuplicateKeyDictionary:Dictionary<string,IList<string>>,IModel
+    public class DuplicateKeyDictionary : Dictionary<string, IList<string>>, IModel
     {
     }
 }
