@@ -27,9 +27,9 @@ namespace ConvertModelToInterface_console
             ModelInfoHolder holder = new ModelInfoHolder(testModel.First(), metaData);
 
             //変換処理の実行
-            FromModelToJsonBuilder builder = new FromModelToJsonBuilder();
+            //FromModelToJsonBuilder builder = new FromModelToJsonBuilder();
             //FromModelToDuplicateKeyDictionaryBuilder builder = new FromModelToDuplicateKeyDictionaryBuilder();
-            //FromModelToDuplicateKVBuilder builder = new FromModelToDuplicateKVBuilder();
+            FromModelToDuplicateKVBuilder builder = new FromModelToDuplicateKVBuilder();
             Director director = new Director(builder,holder);
             director.ConvertModel();
 

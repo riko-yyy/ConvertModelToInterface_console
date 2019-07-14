@@ -31,8 +31,7 @@ namespace ConvertModelToInterface_console.Builders
 
             Type t = fromObj.GetType();
 
-            //TODO BindingFlagsに記述追加
-            FieldInfo[] fields = t.GetFields(BindingFlags.InvokeMethod | BindingFlags.NonPublic | BindingFlags.Instance);
+            var fields = t.GetProperties();
             foreach (var field in fields)
             {
                 //TODO fieldがcollectionの場合、再帰呼び出しが必要
